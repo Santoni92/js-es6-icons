@@ -132,8 +132,8 @@ const icons = [
 
 createBox(icons);
 
-
-
+  
+  
 
 
 /*funzioni */
@@ -146,7 +146,17 @@ function createBox(icons)
         const box = createIcon(icons[i]);
         //document.body.appendChild(box);
         container.appendChild(box);
+        //milestone 3
+        const scelta = document.querySelector('#scelta');
+        scelta.addEventListener('change',function()
+        {
+            if(icons[i].type == this.value)
+            {
+                box.classList.add('hidden');
+            }
+        },false);
     }
+
 }
 
 function createIcon(icon)
@@ -157,6 +167,7 @@ function createIcon(icon)
                         <span>${icon.name}<span>
                          `;
     */
+
     if(icon.color === 'blue')
     {
         box.innerHTML = `
@@ -175,8 +186,8 @@ function createIcon(icon)
                          <span>${icon.name}<span>
                         `;
     }
+
     return box;
 }
-
 
 
