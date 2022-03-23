@@ -143,18 +143,21 @@ function createBox(icons)
     const container = document.querySelector('#container'); //recupero il riferimento al div che conterrà l'icone ed il nome dell'icona stessa
     for(let i = 0; i < icons.length;i++)
     {
+        //container.innerHTML = '';
         const box = createIcon(icons[i]);
         //document.body.appendChild(box);
         container.appendChild(box);
         //milestone 3
+        //Aggiungere alla pagina una select in cui le options corrispondono ai vari tipi di icone (animal, vegetable, user).
+        //Quando l'utente seleziona un tipo dalla select, visualizzare solamente le icone corrispondenti.
         const scelta = document.querySelector('#scelta');
         scelta.addEventListener('change',function()
         {
-            if(icons[i].type == this.value)
+            if(icons[i].type !== this.value)
             {
                 box.classList.add('hidden');
             }
-        },false);
+        });
     }
 
 }
