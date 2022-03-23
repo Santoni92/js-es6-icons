@@ -129,6 +129,7 @@ const icons = [
 //Milestone 1
 //Partendo dalla struttura dati fornita, visualizzare in pagina un box per ogni icona, in cui è presente il nome
 // dell'icona e l'icona stessa.
+
 createBox(icons);
 
 
@@ -142,7 +143,7 @@ function createBox(icons)
     for(let i = 0; i < icons.length;i++)
     {
         const box = createIcon(icons[i]);
-        body.appendChild(box);
+        .appendChild(box);
     }
 }
 
