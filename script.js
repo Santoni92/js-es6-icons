@@ -137,10 +137,10 @@ createBox(icons);
 
 
 /*funzioni */
-
+/*funzione che crea il div al cui interno andranno icona e nome */
 function createBox(icons)
 {
-    const container = document.querySelector('#container');
+    const container = document.querySelector('#container'); //recupero il riferimento al div che conterrà l'icone ed il nome dell'icona stessa
     for(let i = 0; i < icons.length;i++)
     {
         const box = createIcon(icons[i]);
@@ -152,10 +152,29 @@ function createBox(icons)
 function createIcon(icon)
 {
     const box = document.createElement('div');
-    box.innerHTML = `
-                        <i class="${icon.prefix}solid ${icon.prefix}${icon.name}"></i>
+   /* box.innerHTML = `
+                        <i class="${icon.prefix}solid ${icon.prefix}${icon.name} ${icon.prefix}"></i>
                         <span>${icon.name}<span>
                          `;
+    */
+    if(icon.color === 'blue')
+    {
+        box.innerHTML = `
+                            <i class="${icon.prefix}solid ${icon.prefix}${icon.name} blue"></i>
+                            <span>${icon.name}<span>
+                         `;
+    }else if(icon.color === 'green')
+    {
+        box.innerHTML = `
+                         <i class="${icon.prefix}solid ${icon.prefix}${icon.name} green"></i>
+                        <span>${icon.name}<span>
+                        `;
+    }else{
+        box.innerHTML = `
+                         <i class="${icon.prefix}solid ${icon.prefix}${icon.name} orange"></i>
+                         <span>${icon.name}<span>
+                        `;
+    }
     return box;
 }
 
