@@ -140,10 +140,12 @@ createBox(icons);
 
 function createBox(icons)
 {
+    const container = document.querySelector('#container');
     for(let i = 0; i < icons.length;i++)
     {
         const box = createIcon(icons[i]);
-        .appendChild(box);
+        //document.body.appendChild(box);
+        container.appendChild(box);
     }
 }
 
@@ -151,9 +153,9 @@ function createIcon(icon)
 {
     const box = document.createElement('div');
     box.innerHTML = `
-                        <i class="${icon.prefix}${icon.type} ${icon.family}"></i>
+                        <i class="${icon.prefix}solid ${icon.prefix}${icon.name}"></i>
                         <span>${icon.name}<span>
-                         `
+                         `;
     return box;
 }
 
