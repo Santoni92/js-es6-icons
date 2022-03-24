@@ -132,32 +132,37 @@ const icons = [
 
 createBox(icons);
 
-  
-  
+
+//milestone 3
+/*Aggiungere alla pagina una select in cui le options corrispondono ai vari tipi di icone (animal, vegetable, user).
+  Quando l'utente seleziona un tipo dalla select, visualizzare solamente le icone corrispondenti.*/
+  const categories = ['animal','vegetable','user'];
+const selectElement = document.querySelector('.filter select');	//prendo il riferimento alla select
+createSelectElement(categories);
+selectElement.addEventListener('change',(evento)=>
+{
+	//console.log(evento.target.value);
+	const selectedCategory = evento.target.value;
+	if(selectedCategory === 'all')
+	{
+		createBox(icons);
+	}else{
+		createBox(icons.filter(item => item.type === selectedCategory));
+	}
+}
+);
 
 
-/*funzioni */
+/*********************************************************funzioni*******************************************************/
 /*funzione che crea il div al cui interno andranno icona e nome */
 function createBox(icons)
 {
     const container = document.querySelector('#container'); //recupero il riferimento al div che conterrà l'icone ed il nome dell'icona stessa
     for(let i = 0; i < icons.length;i++)
     {
-        //container.innerHTML = '';
         const box = createIcon(icons[i]);
         //document.body.appendChild(box);
         container.appendChild(box);
-        //milestone 3
-        //Aggiungere alla pagina una select in cui le options corrispondono ai vari tipi di icone (animal, vegetable, user).
-        //Quando l'utente seleziona un tipo dalla select, visualizzare solamente le icone corrispondenti.
-        const scelta = document.querySelector('#scelta');
-        scelta.addEventListener('change',function()
-        {
-            if(icons[i].type !== this.value)
-            {
-                box.classList.add('hidden');
-            }
-        });
     }
 
 }
@@ -193,4 +198,13 @@ function createIcon(icon)
     return box;
 }
 
+
+function createSelectElement(types)
+{
+	let content = `<option value="all">All<option>`;
+	types.forEach((element) => {
+		content += `<option value="${element}">${element}</option>`;
+		
+	});
+}
 
